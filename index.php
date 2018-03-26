@@ -1,33 +1,9 @@
 <?php
+# Create a php server with: php -S localhost:8888
+$query = require 'bootstrap.php';
 
-//require 'functions.php';
 
-class Task {
-	public $description;
-
-	public $completed = false;
-
-	public function __construct($description) {
-		// Automatically triggered on instantiation
-		$this->description = $description;
-	}
-
-	public function isComplete() {
-		return $this->completed;
-	}
-	public function complete() {
-		$this->completed = true;
-	}
-
-} 
-
-$tasks = [
-	new Task('Go to the store'),
-	new Task('Finish my screencast'),
-	new Task('Clean my room')
-];
-
-$tasks[0]->complete();
+$tasks = $query->selectAll('todos');
 
 
 require 'index-view.php';
